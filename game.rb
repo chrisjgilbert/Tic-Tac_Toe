@@ -15,6 +15,7 @@ class Game
   end
 
   def start_play
+    game = Game.new
     puts "Hello, welcome to Tic Tac Toe!\nPlease enter Player 1's name!"
     player1 = Player.new(name = gets.chomp.capitalize)
     puts "Welcome #{player1.name}!"
@@ -24,10 +25,6 @@ class Game
     puts "#{player1.name}, which token would you like? 'X' or 'O'"
     player1.token=(gets.chomp.upcase)
     play_game(player1.token)
-  end
-  # sort out token code here...........
-  def choose_token
-
   end
 
   def switch_player(token)
@@ -92,6 +89,11 @@ class Game
       puts "Thanks for playing, goodbye!"
     end
   end
+end
+# sort out rest method
+def reset
+  @turn_counter = 0
+  start_play
 end
 
 class Player
