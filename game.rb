@@ -93,7 +93,6 @@ class Game
     puts "Goodbye!"
   end
 
-# sort out rest method
   def reset
     @board = (1..9).to_a
     @turn_counter = 0
