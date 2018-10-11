@@ -15,7 +15,6 @@ class Game
   end
 
   def start_play
-    game = Game.new
     puts "Hello, welcome to Tic Tac Toe!\nPlease enter Player 1's name!"
     player1 = Player.new(name = gets.chomp.capitalize)
     puts "Welcome #{player1.name}!"
@@ -81,19 +80,25 @@ class Game
   end
 
   def play_again?
-    puts "Would you like to play again? y/n"
-    answer = gets.chomp.downcase
-    if answer == "y"
-      start_play
-    else
-      puts "Thanks for playing, goodbye!"
+    loop do
+      puts "Would you like to play again? y/n"
+      answer = gets.chomp.downcase
+      if answer == "y"
+        reset
+      else
+        puts "Sorry I didn't catch that!"
+      end
+      break if answer == "n"
     end
+    puts "Goodbye!"
   end
-end
+
 # sort out rest method
-def reset
-  @turn_counter = 0
-  start_play
+  def reset
+    @board = (1..9).to_a
+    @turn_counter = 0
+    start_play
+  end
 end
 
 class Player
